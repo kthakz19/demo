@@ -1,58 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Form</title>
-</head>
-<body>
-    <form id="travelForm">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+<section class="book-taxi" id="book-taxi">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3 class="header book-now">Book Taxi Now</h3>
+                <form id="contact-formdata" name="contact-formdata" class="form-horizontal" method="get">
+                    <div class="form-group">
+                        <label for="txtName" class="control-label label-left col-xs-3">Your Name *</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Full Name" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail" class="control-label label-left col-xs-3">Your Email *</label>
+                        <div class="col-xs-9">
+                            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="app_date" class="control-label label-left col-xs-3">When *</label>
+                        <div class="col-xs-9">
+                            <input type="datetime-local" class="form-control" id="app_date" name="app_date" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="strtDest" class="control-label label-left col-xs-3">Start Destination *</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="strtDest" name="strtDest" placeholder="Start Destination" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDest" class="control-label label-left col-xs-3">End Destination *</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="endDest" name="endDest" placeholder="End Destination" required />
+                        </div>
+                    </div>
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+                    <!-- Passenger Type Toggle -->
+                    <div class="form-group">
+                        <label class="control-label label-left col-xs-3">Passenger Type</label>
+                        <div class="col-xs-9">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="singleWomanToggle" name="singleWoman" value="Women">
+                                <label class="form-check-label" for="singleWomanToggle">Only Woman</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="datetime">When (Date and Time):</label>
-        <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+                    <!-- Number of Passengers Field -->
+                    <div class="form-group">
+                        <label for="numPassengers" class="control-label label-left col-xs-3">Number of Passengers</label>
+                        <div class="col-xs-9">
+                            <select class="form-control" id="numPassengers" name="numPassengers">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="more_than_4">More than 4</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <label for="start">Start Destination:</label>
-        <input type="text" id="start" name="start" required><br><br>
+                    <!-- Vehicle Selection -->
+                    <div class="form-group">
+                        <label class="control-label label-left col-xs-3">Choose Vehicle</label>
+                        <div class="col-xs-9">
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Suzuki Ertiga" checked>Ertiga</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="toyota innova">Toyota Innova</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="swift dezire">Swift Dezire</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Tavera">Tavera</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Volvo">Volvo</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="honda Amaze">Honda Amaze</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Innova Crysta">Innova Crysta</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="chevrolet tavera">Honda City</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Tempo Traveller">Tempo Traveller</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="end">End Destination:</label>
-        <input type="text" id="end" name="end" required><br><br>
+                    <div class="form-group">
+                        <label for="txtContactNo" class="control-label label-left col-xs-3">Phone *</label>
+                        <div class="col-xs-9">
+                            <input type="tel" class="form-control" id="txtContactNo" name="txtContactNo" placeholder="Phone Number" required />
+                        </div>
+                    </div>
 
-        <label for="passengerType">Passenger Type (Only Women):</label>
-        <input type="checkbox" id="passengerType" name="passengerType" value="Women"><br><br>
-
-        <label for="numPassengers">Number of Passengers:</label>
-        <input type="number" id="numPassengers" name="numPassengers" required min="1"><br><br>
-
-        <label>Choose Vehicle:</label><br>
-        <input type="radio" id="car" name="vehicle" value="Car" required>
-        <label for="car">Car</label><br>
-        <input type="radio" id="bike" name="vehicle" value="Bike">
-        <label for="bike">Bike</label><br>
-        <input type="radio" id="van" name="vehicle" value="Van">
-        <label for="van">Van</label><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+                    <div class="form-group text-center">
+                        <button type="submit" title="Submit Your Message!" class="btn btn-primary" name="submit" value="Submit">Book Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const form = document.getElementById('travelForm');
+        const form = document.getElementById('contact-formdata');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const formData = new FormData(form);
 
-            // Validate if the checkbox is checked
-            if (formData.has('passengerType')) {
+            // Validate if the checkbox is checked for single woman
+            if (formData.has('singleWoman')) {
                 alert("Passenger type must be women!");
                 return;
             }
 
-            const datetimeInput = document.getElementById('datetime');
+            const datetimeInput = document.getElementById('app_date');
             const now = new Date();
             if (new Date(datetimeInput.value) <= now) {
                 alert("Please choose a future date and time.");
@@ -69,14 +139,14 @@
 
                 // Prepare data for WhatsApp message
                 const message = `
-                    Name: ${formData.get('name')}
-                    Email: ${formData.get('email')}
-                    Date & Time: ${formData.get('datetime')}
-                    Start: ${formData.get('start')}
-                    End: ${formData.get('end')}
-                    Passenger Type: ${formData.get('passengerType')}
+                    Name: ${formData.get('txtName')}
+                    Email: ${formData.get('txtEmail')}
+                    Date & Time: ${formData.get('app_date')}
+                    Start: ${formData.get('strtDest')}
+                    End: ${formData.get('endDest')}
+                    Passenger Type: ${formData.get('singleWoman') ? "Only Women" : "Mixed"}
                     Number of Passengers: ${formData.get('numPassengers')}
-                    Vehicle: ${formData.get('vehicle')}
+                    Vehicle: ${formData.get('selVehicle')}
                 `;
 
                 // Send data to WhatsApp
@@ -99,5 +169,4 @@
             .catch(error => alert(error.message));
         });
     </script>
-</body>
-</html>
+</section>
