@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Form</title>
+</head>
+<body>
+    <form id="travelForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="datetime">When (Date and Time):</label>
+        <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+
+        <label for="start">Start Destination:</label>
+        <input type="text" id="start" name="start" required><br><br>
+
+        <label for="end">End Destination:</label>
+        <input type="text" id="end" name="end" required><br><br>
+
+        <label for="passengerType">Passenger Type (Only Women):</label>
+        <input type="checkbox" id="passengerType" name="passengerType" value="Women"><br><br>
+
+        <label for="numPassengers">Number of Passengers:</label>
+        <input type="number" id="numPassengers" name="numPassengers" required min="1"><br><br>
+
+        <label>Choose Vehicle:</label><br>
+        <input type="radio" id="car" name="vehicle" value="Car" required>
+        <label for="car">Car</label><br>
+        <input type="radio" id="bike" name="vehicle" value="Bike">
+        <label for="bike">Bike</label><br>
+        <input type="radio" id="van" name="vehicle" value="Van">
+        <label for="van">Van</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        const form = document.getElementById('travelForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            // Validate if the checkbox is checked
+            if (formData.has('passengerType')) {
+                alert("Passenger type must be women!");
+                return;
+            }
+
+            const datetimeInput = document.getElementById('datetime');
+            const now = new Date();
+            if (new Date(datetimeInput.value) <= now) {
+                alert("Please choose a future date and time.");
+                return;
+            }
+
+            // Send data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycbwWwziE5Z6_8b9JMfDy7OjlRARUSTVYfye0VBxBpg3chs-dO1lqbGFuIFZOUGktY2mtaA/exec', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Error with Google Sheets submission');
+
+                // Prepare data for WhatsApp message
+                const message = `
+                    Name: ${formData.get('name')}
+                    Email: ${formData.get('email')}
+                    Date & Time: ${formData.get('datetime')}
+                    Start: ${formData.get('start')}
+                    End: ${formData.get('end')}
+                    Passenger Type: ${formData.get('passengerType')}
+                    Number of Passengers: ${formData.get('numPassengers')}
+                    Vehicle: ${formData.get('vehicle')}
+                `;
+
+                // Send data to WhatsApp
+                return fetch('https://api.example.com/sendMessage', { // Replace with your WhatsApp API endpoint
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        phone: '4848484848',  // Replace with the actual phone number
+                        message: message
+                    })
+                });
+            })
+            .then(whatsappResponse => {
+                if (!whatsappResponse.ok) throw new Error('Error with WhatsApp submission');
+
+                return alert("Form submitted successfully and message sent to WhatsApp!");
+            })
+            .catch(error => alert(error.message));
+        });
+    </script>
+</body>
+</html>
