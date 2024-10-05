@@ -1,64 +1,57 @@
-<section class="book-taxi" id="book-taxi">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h3 class="header book-now">Book Taxi Now</h3>
-                <form id="contact-formdata" name="contact-formdata" class="form-horizontal">
+<!DOCTYPE html>
+<html lang="en">
 
-                    <div class="form-group">
-                        <label for="txtName" class="control-label label-left col-xs-3">Your Name *</label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Full Name"
-                                required />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Taxi Now</title>
+</head>
+
+<body>
+    <section class="book-taxi" id="book-taxi">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h3 class="header book-now">Book Taxi Now</h3>
+                    <form id="contact-formdata" name="contact-formdata" class="form-horizontal" method="get">
+                        <div class="form-group">
+                            <label for="txtName">Your Name *</label>
+                            <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Full Name" required />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txtEmail" class="control-label label-left col-xs-3">Your Email *</label>
-                        <div class="col-xs-9">
-                            <input type="email" class="form-control" id="txtEmail" name="txtEmail"
-                                placeholder="Email Address" required />
+                        <div class="form-group">
+                            <label for="txtEmail">Your Email *</label>
+                            <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address" required />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="app_date" class="control-label label-left col-xs-3">When *</label>
-                        <div class="col-xs-9">
-                            <input type="datetime-local" class="form-control" id="app_date" name="app_date" required />
+                        <div class="form-group">
+                            <label for="app_date">When *</label>
+                            <input type="date" class="form-control" id="app_date" name="app_date" required />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="strtDest" class="control-label label-left col-xs-3">Start Destination *</label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="strtDest" name="strtDest"
-                                placeholder="Start Destination" required />
+                        <div class="form-group">
+                            <label for="time">Time *</label>
+                            <input type="time" class="form-control" id="time" name="time" placeholder="Time" required />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="endDest" class="control-label label-left col-xs-3">End Destination *</label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="endDest" name="endDest"
-                                placeholder="End Destination" required />
+                        <div class="form-group">
+                            <label for="strtDest">Start Destination *</label>
+                            <input type="text" class="form-control" id="strtDest" name="strtDest" placeholder="Start Destination" required />
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="endDest">End Destination *</label>
+                            <input type="text" class="form-control" id="endDest" name="endDest" placeholder="End Destination" required />
+                        </div>
 
-                    <div class="form-group">
-                        <label class="control-label label-left col-xs-3">Passenger Type</label>
-                        <div class="col-xs-9">
+                        <!-- New Passenger Type Toggle -->
+                        <div class="form-group">
+                            <label>Passenger Type</label>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="singleWomanToggle"
-                                    name="singleWoman" />
+                                <input class="form-check-input" type="checkbox" id="singleWomanToggle" name="singleWoman" onclick="toggleMessage()">
                                 <label class="form-check-label" for="singleWomanToggle">Only Woman</label>
                             </div>
+                            <p id="safetyMessage" style="color: green; display: none;">Don't Worry, Empowering Women with Secure Rides With Online TaxiCab</p>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="numPassengers" class="control-label label-left col-xs-3">Number of
-                            Passengers</label>
-                        <div class="col-xs-9">
+                        <!-- New Number of Passengers Field -->
+                        <div class="form-group">
+                            <label for="numPassengers">Number of Passengers</label>
                             <select class="form-control" id="numPassengers" name="numPassengers">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -67,88 +60,49 @@
                                 <option value="more_than_4">More than 4</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label label-left col-xs-3">Choose Vehicle</label>
-                        <div class="col-xs-9">
+                        <div class="form-group">
+                            <label>Choose Vehicle</label>
                             <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Suzuki Ertiga"
-                                        checked>Ertiga</label>
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Suzuki Ertiga" checked>Ertiga</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle"
-                                        value="toyota innova">Toyota Innova</label>
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="toyota innova">Toyota Innova</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle" value="swift dezire">Swift
-                                    Dezire</label>
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="swift dezire">Swift Dezire</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle"
-                                        value="Tavera">Tavera</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Volvo">Volvo</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle" value="honda Amaze">Honda
-                                    Amaze</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle"
-                                        value="Innova Crysta">Innova Crysta</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Honda City">Honda
-                                    City</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" id="selVehicle" name="selVehicle"
-                                        value="Tempo Traveller">Tempo Traveller</label>
+                                <label><input type="radio" id="selVehicle" name="selVehicle" value="Tavera">Tavera</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="txtContactNo" class="control-label label-left col-xs-3">Phone *</label>
-                        <div class="col-xs-9">
-                            <input type="tel" class="form-control" id="txtContactNo" name="txtContactNo"
-                                placeholder="Phone Number" required />
+                        <div class="form-group">
+                            <label for="txtContactNo">Phone *</label>
+                            <input type="tel" class="form-control" id="txtContactNo" name="txtContactNo" placeholder="Phone Number" required />
                         </div>
-                    </div>
 
-                    <div class="form-group text-center">
-                        <button type="submit" title="Submit Your Message!" class="btn btn-primary" name="submit"
-                            value="Submit" onclick="sendToWhatsApp()">Book Now</button>
-                    </div>
-                </form>
+                        <div class="form-group text-center">
+                            <button type="submit" title="Submit Your Message!" class="btn btn-primary" name="submit" value="Submit">Book Now</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
-    // Sending form data to Google Sheets and WhatsApp API
-    document.getElementById('contact-formdata').addEventListener('submit', function (event) {
-        event.preventDefault();
+    <script>
+        document.getElementById('contact-formdata').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        const form = document.getElementById('contact-formdata');
-        const formData = new FormData(form);
+            const form = document.getElementById('contact-formdata');
+            const formData = new FormData(form);
 
-        // Append data to Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbwWwziE5Z6_8b9JMfDy7OjlRARUSTVYfye0VBxBpg3chs-dO1lqbGFuIFZOUGktY2mtaA/exec', {
-            method: 'POST',
-            body: formData,
-        })
-            .then(response => response.text())
-            .then(result => {
-                if (result === 'Success') {
-                    // WhatsApp Integration
-                    const message = `
+            // Prepare the WhatsApp message
+            const message = `
             Name: ${formData.get('txtName')}
             Email: ${formData.get('txtEmail')}
-            Date & Time: ${formData.get('app_date')}
+            Date & Time: ${formData.get('app_date')} ${formData.get('time')}
             Start: ${formData.get('strtDest')}
             End: ${formData.get('endDest')}
             Passenger Type: ${formData.get('singleWoman') ? 'Only Woman' : 'Mixed'}
@@ -157,23 +111,37 @@
             Phone: ${formData.get('txtContactNo')}
           `;
 
-                    fetch('https://script.google.com/macros/s/AKfycbwWwziE5Z6_8b9JMfDy7OjlRARUSTVYfye0VBxBpg3chs-dO1lqbGFuIFZOUGktY2mtaA/exec', { // Replace with your WhatsApp API endpoint
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            phone: '8469615007',  // Replace with actual phone number
-                            message: message
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(data => alert("Form submitted successfully and message sent to WhatsApp!"))
-                        .catch(error => alert("Error sending message to WhatsApp"));
-                } else {
-                    alert('Error submitting form to Google Sheets');
-                }
+            // URL encode the message
+            const encodedMessage = encodeURIComponent(message);
+
+            // WhatsApp Number
+            const phoneNumber = '918469615007';  // Number to send WhatsApp to (in international format)
+
+            // WhatsApp URL
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp Web/App with pre-filled message
+            window.open(whatsappUrl, '_blank');
+
+            // Send the form data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycbwWwziE5Z6_8b9JMfDy7OjlRARUSTVYfye0VBxBpg3chs-dO1lqbGFuIFZOUGktY2mtaA/exec', {
+                method: 'POST',
+                body: formData,
             })
-            .catch(error => alert(error.message));
-    });
-</script>
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'Success') {
+                        alert("Form submitted successfully and WhatsApp message opened!");
+                    } else {
+                        alert('Error submitting form to Google Sheets');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    alert("ERROR submitting form");
+                });
+        });
+    </script>
+</body>
+
+</html>
